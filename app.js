@@ -32,6 +32,27 @@ async function getMessages(roomID) {
   return messageArray
 }
 
+app.post('/add/:roomId', async (req, res)=>{
+  const roomId = req.params.roomId
+  const {user, body} = req.body
+  // const messageRef = db.collection("rooms").doc(roomId).collection("messages");
+  let messageArray = [];
+  try {
+    const doc = await db.collection("rooms").doc(roomId).collection("messages").add({user, body, time: {seconds: (new Date().getTime() / 1000)}});
+  //   console.log(doc)
+  // doc.get().forEach((d) => {
+  //   console.log(d.data());
+  //   messageArray = [...messageArray, { id: d.id, ...d.data() }];
+  // });
+    return res.status(201).send({ id: doc.id, message: "Successfully created a message."})
+    return res.status(201).send(messageArray)
+  } catch (error) {
+    console.log(error)
+   return res.status(500).send({message: "Can\'t create resource "})
+  } 
+
+})
+
 app.get("/:roomId", async (req, res) => {
   // const id = req.params.id
   await getMessages(req.params.roomId)
