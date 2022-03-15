@@ -43,8 +43,8 @@ app.get("/:roomId", async (req, res) => {
     .catch((err) => res.status(503).send(err));  
   }
 
-  return res.status(301).send({
-      message: "No id supplied"
+  return res.status(404).send({
+      message: "Not found. "
   })
  
   // return res.status(200).send(docs)
