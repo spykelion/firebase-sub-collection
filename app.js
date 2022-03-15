@@ -34,20 +34,13 @@ async function getMessages(roomID) {
 
 app.get("/:roomId", async (req, res) => {
   // const id = req.params.id
-  if(req.params.roomId){
-     await getMessages(req.params.roomId)
+  await getMessages(req.params.roomId)
     .then((result) => {
       console.log("result", result);
       res.status(200).send(result);
     })
-    .catch((err) => res.status(503).send(err));  
-  }
+    .catch((err) => res.status(503).send(err));
 
-  return res.status(404).send({
-      message: "Not found. "
-  })
- 
-  // return res.status(200).send(docs)
 });
 
 // app.use(identifyError,handleError)
