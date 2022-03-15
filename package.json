@@ -1,0 +1,24 @@
+{
+  "name": "sub-collection",
+  "version": "1.0.0",
+  "description": "grap a document id and return all subcollection in that document",
+  "main": "server.js",
+  "repository": "https://github.com/firebase-sub-collection.git",
+  "author": "NDI Lionel",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "start-prod": "set NODE_ENV=production && node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "firebase-admin": "^10.0.2"
+  }
+}
