@@ -34,12 +34,19 @@ async function getMessages(roomID) {
 
 app.get("/:roomId", async (req, res) => {
   // const id = req.params.id
-  await getMessages(req.params.roomId)
+  if(req.params.roomId){
+     await getMessages(req.params.roomId)
     .then((result) => {
       console.log("result", result);
       res.status(200).send(result);
     })
-    .catch((err) => res.status(503).send(err));
+    .catch((err) => res.status(503).send(err));  
+  }
+
+  return res.status(301).send({
+      message: "No id supplied"
+  })
+ 
   // return res.status(200).send(docs)
 });
 
