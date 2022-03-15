@@ -36,10 +36,11 @@ app.get("/:roomId", async (req, res) => {
   // const id = req.params.id
   await getMessages(req.params.roomId)
     .then((result) => {
-      console.log("result", result);
       res.status(200).send(result);
     })
-    .catch((err) => res.status(503).send(err));
+    .catch((err) => {
+        console.log(err);
+        res.status(503).send(err)});
 
 });
 

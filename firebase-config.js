@@ -1,6 +1,5 @@
 const firebase = require('firebase/app');
 const firestore = require('firebase/firestore')
-// const { getFirestore } = require('firebase');
 
 
 const firebaseConfig = {
@@ -15,8 +14,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore()
-// const auth = firebase.auth();
-// const provider = new firebase.auth.GoogleAuthProvider();
 
-// export { auth, provider };
 module.exports =  db;
