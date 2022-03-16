@@ -38,7 +38,7 @@ app.post('/add/:roomId', async (req, res)=>{
   // const messageRef = db.collection("rooms").doc(roomId).collection("messages");
   let messageArray = [];
   try {
-    const doc = await db.collection("rooms").doc(roomId).collection("messages").add({user, body, time: {seconds: (new Date().getTime())}});
+    const doc = await db.collection("rooms").doc(roomId).collection("messages").add({user, body, time: {seconds: firebase.firestore.FieldValue.serverTimeStamp()}});
   //   console.log(doc)
   // doc.get().forEach((d) => {
   //   console.log(d.data());
