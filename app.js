@@ -22,7 +22,7 @@ async function getRoomDocs(id) {
 } */
 
 async function getMessages(roomID) {
-  const messageRef2 = db.collection("rooms").doc(roomID).collection("messages").orderBy("time", "asc);
+  const messageRef2 = db.collection("rooms").doc(roomID).collection("messages");
   const messageSnapshot = await messageRef2.get();
   let messageArray = [];
   messageSnapshot.forEach((doc) => {
