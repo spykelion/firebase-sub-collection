@@ -22,7 +22,7 @@ async function getRoomDocs(id) {
 } */
 
 async function getMessages(roomID) {
-  const messageRef2 = db.collection("rooms").doc(roomID).collection("messages");
+  const messageRef2 = db.collection("rooms").doc(roomID).collection("messages").orderBy("time", "asc);
   const messageSnapshot = await messageRef2.get();
   let messageArray = [];
   messageSnapshot.forEach((doc) => {
@@ -38,7 +38,7 @@ app.post('/add/:roomId', async (req, res)=>{
   // const messageRef = db.collection("rooms").doc(roomId).collection("messages");
   let messageArray = [];
   try {
-    const doc = await db.collection("rooms").doc(roomId).collection("messages").add({user, body, time: {seconds: (new Date().getTime() / 1000)}});
+    const doc = await db.collection("rooms").doc(roomId).collection("messages").add({user, body, time: {seconds: (new Date().getTime())}});
   //   console.log(doc)
   // doc.get().forEach((d) => {
   //   console.log(d.data());
